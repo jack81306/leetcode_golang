@@ -8,7 +8,7 @@ func maxProfit(prices []int) int {
 	result := make([]int, len(prices))
 	maxprofit := 0
 	result[0] = prices[0]
-	for i := 1; i <= prices; i++ {
+	for i := 1; i < len(prices); i++ {
 		if prices[i] < result[i-1] {
 			result[i] = prices[i]
 		} else {
