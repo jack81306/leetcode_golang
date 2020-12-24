@@ -14,8 +14,7 @@ func wordBreak(s string, wordDict []string) []string {
 	for i,_ := range table{
 		table[i] = []string{}
 	}
-    tmp:=  dp(s,wordDict,0)
-	return tmp
+	return dp(s,wordDict,0)
 }
 
 func dp(s string,wordDict []string,start int) []string{
@@ -26,13 +25,10 @@ func dp(s string,wordDict []string,start int) []string{
 	res := []string{}
 	for	_,v := range wordDict{
 		if isprefix(s[start:],v){
-            if len(s[start:])==len(v){
+			if len(s)==len(v){
 				res = append(res,v)
 			}else{
-                if start+len(v)>=len(s){
-                    continue
-                }
-                tmp := dp(s,wordDict,start+len(v))
+				tmp := wordBreak(s[len(v):],wordDict)
 				if len(tmp)>0{
 					for _,val := range tmp{
 						res = append(res,v+" "+val)
@@ -56,7 +52,5 @@ func isprefix(s,s2 string)bool{
 }
 
 func main() {
-	s := "hello world"
-	s2 := "heelo"
-	fmt.Println(isprefix(s,s2))
+	fmt.Println("hello world")
 }
